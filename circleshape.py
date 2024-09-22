@@ -1,5 +1,6 @@
 import pygame
 
+
 class CircleShape(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
         if hasattr(self, "containers"):
@@ -17,3 +18,8 @@ class CircleShape(pygame.sprite.Sprite):
     def update(self, dt):
         # must override
         pass
+
+    def iscollided(self, othershape):
+        return (self.radius + othershape.radius) >= pygame.math.Vector2.distance_to(
+            self.position, othershape.position
+        )

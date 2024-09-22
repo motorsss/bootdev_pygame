@@ -2,6 +2,7 @@ import pygame
 from constants import *
 from player import *
 from asteroidfield import *
+import sys
 
 
 def main():
@@ -23,6 +24,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        for astro in asteroids:
+            if astro.iscollided(player):
+                print("Game Over!")
+                exit()
+
         for obj in updatable:
             obj.update(dt)
         screen.fill("black")
